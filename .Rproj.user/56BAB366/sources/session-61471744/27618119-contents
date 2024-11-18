@@ -1,0 +1,232 @@
+# Load necessary libraries
+library(dplyr)
+library(ggplot2)
+# Load the data
+data <- read.csv("/Users/shangjunyao/DATA550/midterm_project/covid_sub.csv")
+# Check for missing values
+summary(data)
+# Check the percentage of missing values for each column
+sapply(data, function(x) mean(is.na(x)) * 100)
+num_columns <- ncol(data)
+print(num_columns)
+dimensions <- dim(data)
+num_columns <- dimensions[2]  # The second element is the number of columns
+print(num_columns)
+rm dimensions
+setwd("/Users/shangjunyao/DATA550/midterm_project")
+# Define the main project directory name
+project_dir <- "Covid-19-Data-Analysis"
+# Create the project directory
+dir.create(project_dir)
+# Create subdirectories within the main directory
+dir.create(file.path(project_dir, "data"))
+dir.create(file.path(project_dir, "scripts"))
+dir.create(file.path(project_dir, "scripts", "demographics_analysis"))
+dir.create(file.path(project_dir, "scripts", "comorbidity_analysis"))
+dir.create(file.path(project_dir, "scripts", "severity_treatment_analysis"))
+dir.create(file.path(project_dir, "scripts", "mortality_analysis"))
+dir.create(file.path(project_dir, "output"))
+dir.create(file.path(project_dir, "config"))
+dir.create(file.path(project_dir, "report"))
+file.copy("/Users/shangjunyao/DATA550/midterm_project/covid_sub.csv", file.path(project_dir, "data"))
+file.copy("/Users/shangjunyao/DATA550/midterm_project/covid_sub.csv", file.path(project_dir, "data"))
+file.create(file.path(project_dir, "config", "config.yaml"))
+file.create(file.path(project_dir, "README.md"))
+# Set working directory to your midterm project folder
+setwd("/Users/shangjunyao/DATA550/midterm_project")
+# Create the main folder structure
+dir.create("data")
+dir.create("scripts")
+dir.create("scripts/demographics_analysis")
+dir.create("scripts/comorbidity_analysis")
+dir.create("scripts/severity_treatment_analysis")
+dir.create("scripts/mortality_analysis")
+dir.create("output")
+dir.create("config")
+dir.create("report")
+file.copy("/Users/shangjunyao/DATA550/midterm_project/covid_sub.csv", file.path(project_dir, "data"))
+file.copy("/Users/shangjunyao/DATA550/midterm_project/covid_sub.csv", "data/covid_sub.csv")
+file.create("config.yaml")
+file.create("config.yaml")
+file.create("README.md")
+file.create("config/config.yaml")
+data <- read.csv("/Users/shangjunyao/DATA550/midterm_project/covid_sub.csv")
+colSums(is.na(data))
+date_died_column <- data$date_died
+# Remove DATE_DIED temporarily from the dataset
+data_without_date_died <- data[, !names(data) %in% "date_died"]
+# Apply na.omit() to remove rows with missing values in other columns
+data_cleaned <- na.omit(data_without_date_died)
+# Add back the DATE_DIED column (only for rows that remain after na.omit)
+data_cleaned$date_died <- date_died_column[rownames(data_cleaned)]
+View(data_cleaned)
+colSums(is.na(data_cleaned))
+data_cleaned <- na.omit(data[, !names(data) %in% "date_died"])
+# Re-add DATE_DIED column from the original dataset
+data_cleaned$date_died <- data$date_died[rownames(data_cleaned)]
+# Verify that only DATE_DIED may have missing values
+colSums(is.na(data_cleaned))
+data <- read.csv("/Users/shangjunyao/DATA550/midterm_project/covid_sub.csv")
+data_cleaned <- na.omit(data[, !names(data) %in% "date_died"])
+# Re-add DATE_DIED column from the original dataset
+data_cleaned$date_died <- data$date_died[rownames(data_cleaned)]
+# Verify that only DATE_DIED may have missing values
+colSums(is.na(data_cleaned))
+data <- read.csv("/Users/shangjunyao/DATA550/midterm_project/covid_sub.csv")
+rows_to_keep <- complete.cases(data[, !names(data) %in% "date_died"])
+# Subset the data to include only rows without missing values in other columns
+data_cleaned <- data[rows_to_keep, ]
+# Verify that only DATE_DIED may still contain missing values
+colSums(is.na(data_cleaned))
+View(data_cleaned)
+View(data)
+View(data_cleaned)
+data <- read.csv("/Users/shangjunyao/DATA550/midterm_project/covid_sub.csv")
+data_clean <- data %>%
+filter(if_all(SEX ~ !is.na(.x)))%>%
+filter(if_all(INTUBED ~ !is.na(.x)))%>%
+filter(if_all(PNEUMONIA ~ !is.na(.x))) %>%
+filter(if_all(AGE ~ !is.na(.x)))%>%
+filter(if_all(PREGNANT ~ !is.na(.x)))%>%
+filter(if_all(DIABETES ~ !is.na(.x)))%>%
+filter(if_all(COPD ~ !is.na(.x)))%>%
+filter(if_all(ASTHMA ~ !is.na(.x)))%>%
+filter(if_all(INMSUPR ~ !is.na(.x)))%>%
+filter(if_all(HYPERYENSION ~ !is.na(.x)))%>%
+filter(if_all(OTHER_DISEASE ~ !is.na(.x)))%>%
+filter(if_all(CARDIOVASCULAR ~ !is.na(.x)))%>%
+filter(if_all(OBESITY ~ !is.na(.x)))%>%
+filter(if_all(RENAL_CHRONIC ~ !is.na(.x)))%>%
+filter(if_all(TOBACCO ~ !is.na(.x)))%>%
+filter(if_all(ICU ~ !is.na(.x)))%>%
+data_clean <- data %>%
+filter(if_all(SEX ~ !is.na(.x)))%>%
+filter(if_all(INTUBED ~ !is.na(.x)))%>%
+filter(if_all(PNEUMONIA ~ !is.na(.x))) %>%
+filter(if_all(AGE ~ !is.na(.x)))%>%
+filter(if_all(PREGNANT ~ !is.na(.x)))%>%
+filter(if_all(DIABETES ~ !is.na(.x)))%>%
+filter(if_all(COPD ~ !is.na(.x)))%>%
+filter(if_all(ASTHMA ~ !is.na(.x)))%>%
+filter(if_all(INMSUPR ~ !is.na(.x)))%>%
+filter(if_all(HYPERYENSION ~ !is.na(.x)))%>%
+filter(if_all(OTHER_DISEASE ~ !is.na(.x)))%>%
+filter(if_all(CARDIOVASCULAR ~ !is.na(.x)))%>%
+filter(if_all(OBESITY ~ !is.na(.x)))%>%
+filter(if_all(RENAL_CHRONIC ~ !is.na(.x)))%>%
+filter(if_all(TOBACCO ~ !is.na(.x)))%>%
+filter(if_all(ICU ~ !is.na(.x)))
+columns_to_filter <- c("SEX", "INTUBED", "PNEUMONIA", "AGE", "PREGNANT", "DIABETES",
+"COPD", "ASTHMA", "INMSUPR", "HYPERTENSION", "OTHER_DISEASE",
+"CARDIOVASCULAR", "OBESITY", "RENAL_CHRONIC", "TOBACCO", "ICU")
+# Apply filters to remove rows with missing values in the specified columns
+data_clean <- data %>%
+filter(if_all(all_of(columns_to_filter), ~ !is.na(.)))
+# Define the columns to filter for missing values, excluding DATE_DIED
+columns_to_filter <- c("SEX", "INTUBED", "PNEUMONIA", "AGE", "PREGNANT", "DIABETES",
+"COPD", "ASTHMA", "INMSUPR", "HIPERTENSION", "OTHER_DISEASE",
+"CARDIOVASCULAR", "OBESITY", "RENAL_CHRONIC", "TOBACCO", "ICU")
+# Apply filters to remove rows with missing values in the specified columns
+data_clean <- data %>%
+filter(if_all(all_of(columns_to_filter), ~ !is.na(.)))
+View(data_clean)
+colSums(is.na(data_clean))
+library(dplyr)
+data <- read.csv("/Users/shangjunyao/DATA550/midterm_project/covid_sub.csv")
+#Check the missing data
+colSums(is.na(data))
+#Clean the missing data except date_died
+columns_to_filter <- c("SEX", "INTUBED", "PNEUMONIA", "AGE", "PREGNANT", "DIABETES",
+"COPD", "ASTHMA", "INMSUPR", "HIPERTENSION", "OTHER_DISEASE",
+"CARDIOVASCULAR", "OBESITY", "RENAL_CHRONIC", "TOBACCO", "ICU")
+data_clean <- data %>%
+filter(if_all(all_of(columns_to_filter), ~ !is.na(.)))
+# Check the result
+colSums(is.na(data_clean))
+write.csv(data_clean, "/Users/shangjunyao/DATA550/midterm_project/data/data_clean.csv", row.names=FALSE)
+install.packages("haven")
+install.packages("survival")
+install.packages("survminer")
+# Load libraries
+library(haven)
+library(survival)
+library(survminer)
+# Load the dataset
+vets <- read_sas("/Users/shangjunyao/Desktop/vets.sas7bdat")
+setwd /Users/shangjunyao/Desktop/
+vets$STATUS <- factor(vets$STATUS, levels = c(0, 1), labels = c("Censored", "Died"))
+log_TX <- survfit(Surv(SURVT,STATUS) ~ TX, data=vets )
+ggsurvplot(survfit(Surv(SURVT, STATUS) ~ TX, data = vets), fun = "cloglog", title = "Log-Log Survival Curves for TX")
+ggsurvplot(survfit(Surv(SURVT, STATUS) ~ TX, data = vets),
+fun = "cloglog")
+cox_tx <- coxph(Surv(SURVT, STATUS == "Died") ~ TX, data = vets)
+test_ph_tx <- cox.zph(cox_tx)
+cox_tx <- coxph(Surv(SURVT, STATUS == "Died") ~ TX, data = vets)
+test_ph_tx <- cox.zph(cox_tx)
+cox_tx <- coxph(Surv(SURVT, STATUS) ~ TX, data = vets, ties="breslow")
+cox.zph(cox_tx)
+coxph(Surv(SURVT, STATUS)~TX+tt(TX),
+data = vet,
+ties = "breslow",
+tt = function(x,t,...) as.numeric(x)*t
+)
+coxph(Surv(SURVT, STATUS)~TX+tt(TX),
+data = vets,
+ties = "breslow",
+tt = function(x,t,...) as.numeric(x)*t
+)
+coxph(Surv(SURVT, STATUS)~TX+tt(TX),
+data = vets,
+ties = "breslow",
+tt = function(x,t,...) as.numeric(x)*log(t)
+)
+ggsurvplot(survfit(Surv(SURVT, STATUS) ~ AGE, data = vets),
+fun = "cloglog")
+View(vets)
+# Define age groups: less than 65, 65-80, and greater than 80
+vets$AGEGROUP <- cut(vets$AGE,
+breaks = c(-Inf, 65, 80, Inf),
+labels = c("Less than 65", "65-80", "Greater than 80"))
+# Verify the distribution of age groups
+table(vets$AGEGROUP)
+median(vets$AGE)
+vets$age_group2<-ifelse(vets$AGE <62, "Less than 62", "older than 62")
+ggsurvplot(survfit(Surv(SURVT, STATUS) ~ age_group2, data = vets),
+fun = "cloglog")
+vets$age_group3 <- cut(vets$AGE,
+breaks = 3,
+labels = c(1, 2, 3),
+include.lowest = TRUE)
+ggsurvplot(survfit(Surv(SURVT, STATUS) ~ age_group3, data = vets),
+fun = "cloglog")
+cox_age <- coxph(Surv(SURVT, STATUS) ~ AGE, data = vets, ties="breslow")
+cox.zph(cox_age)
+coxph(Surv(SURVT, STATUS)~AGE+tt(AGE),
+data = vets,
+ties = "breslow",
+tt = function(x,t,...) as.numeric(x)*t
+)
+coxph(Surv(SURVT, STATUS)~AGE+tt(AGE),
+data = vets,
+ties = "breslow",
+tt = function(x,t,...) as.numeric(x)*log(t)
+)
+ggsurvplot(survfit(Surv(SURVT, STATUS) ~ PRIORTX, data = vets),
+fun = "cloglog")
+cox_p <- coxph(Surv(SURVT, STATUS) ~ PRIORTX, data = vets, ties="breslow")
+cox.zph(cox_p)
+coxph(Surv(SURVT, STATUS)~PRIORTX+tt(PRIORTX),
+data = vets,
+ties = "breslow",
+tt = function(x,t,...) as.numeric(x)*t
+)
+coxph(Surv(SURVT, STATUS)~PRIORTX+tt(PRIORTX),
+data = vets,
+ties = "breslow",
+tt = function(x,t,...) as.numeric(x)*log(t)
+)
+library(survival)
+# Fit the Cox Proportional Hazards model controlling for AGE
+cox_model_prior_age <- coxph(Surv(SURVT, STATUS) ~ PRIORTX + AGE, data = vets)
+# Display the results
+summary(cox_model_prior_age)

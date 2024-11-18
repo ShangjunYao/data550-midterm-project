@@ -1,0 +1,7 @@
+"0",""
+"0","library(dplyr)"
+"0","library(ggplot2)"
+"0","library(knitr)"
+"0","library(yaml)"
+"0",""
+"0","data <- read.csv(here::here(""data"", ""data_clean.csv""))"

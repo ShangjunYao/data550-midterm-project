@@ -1,0 +1,61 @@
+---
+title: "midterm_report"
+author: "Group2"
+date: "2024-11-18"
+output: html_document
+
+---
+
+```{r setup, include=FALSE}
+
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(yaml)
+
+data <- read.csv(here::here("data", "data_clean.csv"))
+```
+
+# Introduction
+
+This report presents an analysis of COVID-19 data focusing on patient demographics, comorbidities, and outcomes. The purpose is to identify patterns that may inform health policy and care strategies.
+
+# Demographic Analysis
+## Demographic Table
+The table below provides a summary of demographic characteristics of COVID-19 patients, grouped by age group and gender.
+
+```{r, table1}
+# Load the demographic summary table
+table_Demographic <- readRDS(here::here("output/output_demographic", "table_Demographic.rds"))
+
+# Display the table
+table_Demographic
+```
+
+## Age Distribution Plot
+The plot below shows the age distribution of COVID-19 patients, allowing us to see how ages are spread across the population in this dataset.
+```{r, table2}
+# Load the age distribution plot
+plot_age_distribution <- readRDS(here::here("output/output_demographic", "plot_age_distribution.rds"))
+
+# Display the plot
+plot_age_distribution
+```
+
+## Classification Across Age Groups
+This plot shows the distribution of COVID-19 patients across different classifications, segmented by age group.
+```{r, table3}
+# Load the classification by age group plot
+plot_class_age_bar <- readRDS(here::here("output/output_demographic", "plot_class_age_bar.rds"))
+
+# Display the plot
+plot_class_age_bar
+
+```
+## Conclusion
+The analysis of COVID-19 patient demographics and clinical classifications provides insights into the age distribution, comorbidities, and clinical classifications of patients, with a focus on how these attributes vary by age.
+
+
+
+
+
