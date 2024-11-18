@@ -9,7 +9,10 @@ output: html_document
 ```{r}
 #import cleaned data
 library(readr)
-data_clean <- read_csv("~/Downloads/data550-midterm/data550-midterm-project/data/data_clean.csv")
+library(here)
+
+data_clean <- read_csv(here::here("data", "data_clean.csv"))
+
 ```
 
 # Analyze Pre-Existing Conditions Among COVID-19 Patients
