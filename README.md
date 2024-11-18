@@ -29,10 +29,11 @@ table_Demographic.rds: Generated summary table saved to output/output_demographi
 plot_age_distribution.rds: Histogram of age distribution saved to output/output_demographic/.
 plot_class_age_bar.rds: Bar plot of classification distribution by age group saved to output/output_demographic/.
 
-Comorbidity Analysis (Coder 2): Yueran Cao
+# Comorbidity Analysis (Coder 2): Yueran Cao
 Analyze pre-existing conditions.
 (Diabetes, copd, asthma, inmsupr, hypertension, cardiovascular, renal chronic, other disease, obesity, tobacco)
-Show prevalence rates of these conditions among COVID-19 patients, using bar charts and tables.
+Conducted the comorbidity analysis, focusing on pre-existing conditions and their prevalence among COVID-19 patients, with visual and tabular outputs.
+
 
 Severity and Treatment Type (Coder 3): Tania Armour
 Summarize COVID-19 severity levels and types of care received (e.g., outpatient vs. hospitalized).

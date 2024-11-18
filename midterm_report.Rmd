@@ -55,7 +55,64 @@ plot_class_age_bar
 ## Conclusion
 The analysis of COVID-19 patient demographics and clinical classifications provides insights into the age distribution, comorbidities, and clinical classifications of patients, with a focus on how these attributes vary by age.
 
+# Comorbidity Analysis
 
+## Counts of Yes and No Responses for Each Condition
+This bar chart visualizes the prevalence of various pre-existing health conditions among COVID-19 patients. Each bar represents a condition, with counts for "Yes" (patients with the condition) and "No" (patients without the condition) displayed in red and blue, respectively.
 
+```{r, include=TRUE, echo=FALSE}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(readr)
+library(here)
+
+data_clean <- read_csv(here::here("data", "data_clean.csv"))
+# Prepare data
+condition_data <- data_clean %>%
+  select(PNEUMONIA, PREGNANT, DIABETES, COPD, ASTHMA, INMSUPR, 
+         HIPERTENSION, CARDIOVASCULAR, RENAL_CHRONIC, OTHER_DISEASE, 
+         OBESITY, TOBACCO) %>%
+  pivot_longer(cols = everything(), names_to = "condition", values_to = "status") %>%
+  mutate(status = factor(status, levels = c("Yes", "No"))) %>%
+  group_by(condition, status) %>%
+  summarize(count = n(), .groups = 'drop')
+
+# Create the bar chart
+ggplot(condition_data, aes(x = condition, y = count, fill = status)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  labs(title = "Counts of Yes and No Responses for Each Condition",
+       x = "Condition",
+       y = "Count",
+       fill = "Status") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+## Summary of Prevalence Table for Pre-Existing Conditions
+The prevalence table provides a summary of the number of COVID-19 patients with and without various pre-existing conditions, along with the calculated prevalence of each condition (as a percentage) among the patient population.
+
+```{r, table4, echo= FALSE}
+
+# Calculate prevalence
+data_with_prevalence <- data_clean %>%
+  select(PNEUMONIA, PREGNANT, DIABETES, COPD, ASTHMA, INMSUPR, 
+         HIPERTENSION, CARDIOVASCULAR, RENAL_CHRONIC, OTHER_DISEASE, 
+         OBESITY, TOBACCO) %>%
+  mutate(across(everything(), ~factor(., levels = c("Yes", "No")))) %>%
+  pivot_longer(cols = everything(), names_to = "condition", values_to = "status") %>%
+  group_by(condition, status) %>%
+  summarize(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = status, values_from = count, values_fill = list(count = 0)) %>%
+  mutate(prevalence = Yes / (Yes + No) * 100)
+
+# Create a table with counts and prevalence
+condition_data_table <- data_with_prevalence %>%
+  select(condition, Yes, No, prevalence) %>%
+  rename(Count_Yes = Yes, Count_No = No, Prevalence_Yes = prevalence)
+
+# View the table with counts and prevalence
+print(condition_data_table)
+```
 
 
