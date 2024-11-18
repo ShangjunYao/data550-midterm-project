@@ -61,10 +61,21 @@ classification_pie_chart.png: COVID-19 classification pie chart saved in output/
 
 
 
-Outcome and Mortality Analysis (Coder 4): Chiao Yu Huang
-Focus on ICU admissions, intubation status, and mortality data.
-(Intubed, icu, usmr, medical unit, date died)
-Generate tables and survival rate graphs, and assess ICU and intubation rates based on comorbidities.
+# Outcome and Mortality Analysis (Coder 4): Chiao Yu Huang
+Analyzes mortality-related outcomes among COVID-19 patients, focusing on ICU admission rates, intubation rates, and mortality rates. Additionally, it explores mortality differences based on pregnancy status.
+
+## Outputs:
+Summary Table:
+A table that provides the rates for ICU admission, intubation, and mortality among COVID-19 patients.
+
+Mortality Rate by Pregnancy Status Plot:
+A bar chart showing mortality rates based on pregnancy status.
+
+## Files:
+
+summary_table.rds: The summary table, saved as an RDS file in output/.
+
+mortality_by_pregnancy.png: The mortality rate plot by pregnancy status, saved as a .png file in output/.
 
 
 

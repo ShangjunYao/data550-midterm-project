@@ -138,4 +138,17 @@ knitr::include_graphics(here::here("output/severity_by_asthma_diabetes.png"))
 knitr::include_graphics(here::here("output/classification_pie_chart.png"))
 ```
 
+# Outcome and Mortality Analysis
+
+## Summary of ICU Admission, Intubation, and Mortality Rates
+```{r, mortality1}
+summary_table <- readRDS(here::here("output", "summary_table.rds"))
+kable(summary_table, caption = "Summary of ICU Admission, Intubation, and Mortality Rates")
+```
+
+## Mortality Rate by Pregnancy Status
+
+```{r, mortality2}
+knitr::include_graphics(here::here("output", "mortality_by_pregnancy.png"))
+```
 
