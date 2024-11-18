@@ -1,0 +1,66 @@
+---
+title: "Analysis of Pre-Existing Conditions Among COVID-19 Patients"
+author: "Yueran Cao"
+date: "`r Sys.Date()`"
+output: html_document
+
+---
+
+```{r}
+#import cleaned data
+library(readr)
+data_clean <- read_csv("~/Downloads/data550-midterm/data550-midterm-project/data/data_clean.csv")
+```
+
+# Analyze Pre-Existing Conditions Among COVID-19 Patients
+1.Draw the bar chart
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+# Prepare data
+condition_data <- data_clean %>%
+  select(PNEUMONIA, PREGNANT, DIABETES, COPD, ASTHMA, INMSUPR, 
+         HIPERTENSION, CARDIOVASCULAR, RENAL_CHRONIC, OTHER_DISEASE, 
+         OBESITY, TOBACCO) %>%
+  pivot_longer(cols = everything(), names_to = "condition", values_to = "status") %>%
+  mutate(status = factor(status, levels = c("Yes", "No"))) %>%
+  group_by(condition, status) %>%
+  summarize(count = n(), .groups = 'drop')
+
+# Create the bar chart
+ggplot(condition_data, aes(x = condition, y = count, fill = status)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  labs(title = "Counts of Yes and No Responses for Each Condition",
+       x = "Condition",
+       y = "Count",
+       fill = "Status") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+
+```
+2. Draw the table
+```{r}
+
+# Calculate prevalence
+data_with_prevalence <- data_clean %>%
+  select(PNEUMONIA, PREGNANT, DIABETES, COPD, ASTHMA, INMSUPR, 
+         HIPERTENSION, CARDIOVASCULAR, RENAL_CHRONIC, OTHER_DISEASE, 
+         OBESITY, TOBACCO) %>%
+  mutate(across(everything(), ~factor(., levels = c("Yes", "No")))) %>%
+  pivot_longer(cols = everything(), names_to = "condition", values_to = "status") %>%
+  group_by(condition, status) %>%
+  summarize(count = n(), .groups = 'drop') %>%
+  pivot_wider(names_from = status, values_from = count, values_fill = list(count = 0)) %>%
+  mutate(prevalence = Yes / (Yes + No) * 100)
+
+# Create a table with counts and prevalence
+condition_data_table <- data_with_prevalence %>%
+  select(condition, Yes, No, prevalence) %>%
+  rename(Count_Yes = Yes, Count_No = No, Prevalence_Yes = prevalence)
+
+# View the table with counts and prevalence
+print(condition_data_table)
+```
