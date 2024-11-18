@@ -19,7 +19,7 @@ plot1 <- ggplot(data_clean, aes(x = PNEUMONIA, fill = PREGNANT)) +
   scale_fill_manual(values = c("lightblue", "salmon"))
 
 # Save Graph 1
-ggsave("pneumonia_vs_pregnancy.png", plot = plot1, width = 8, height = 6)
+ggsave("output/pneumonia_vs_pregnancy.png", plot = plot1, width = 8, height = 6)
 print(plot1)
 # Graph 2: Create a new column for Death status (Yes/No)
 data_clean$DEATH_STATUS <- ifelse(is.na(data_clean$DATE_DIED), "No", "Yes")
@@ -35,7 +35,7 @@ plot2 <- ggplot(data_clean, aes(x = CLASIFFICATION_FINAL, fill = DEATH_STATUS)) 
   scale_fill_manual(values = c("lightblue", "salmon"))
 
 # Save Graph 2
-ggsave("death_status_by_severity.png", plot = plot2, width = 8, height = 6)
+ggsave("output/death_status_by_severity.png", plot = plot2, width = 8, height = 6)
 
 # Graph 3: Showing Asthma and Diabetes Cases based on classification
 plot3 <- ggplot(data_clean, aes(x = CLASIFFICATION_FINAL, fill = factor(ASTHMA))) +
@@ -50,7 +50,7 @@ plot3 <- ggplot(data_clean, aes(x = CLASIFFICATION_FINAL, fill = factor(ASTHMA))
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 # Save Graph 3
-ggsave("severity_by_asthma_diabetes.png", plot = plot3, width = 10, height = 6)
+ggsave("output/severity_by_asthma_diabetes.png", plot = plot3, width = 10, height = 6)
 
 # Graph 4: Count the classification categories
 classification_counts <- data_clean %>%
@@ -65,6 +65,6 @@ plot4 <- ggplot(classification_counts, aes(x = "", y = n, fill = factor(CLASIFFI
   theme_void()
 
 # Save Graph 4
-ggsave("classification_pie_chart.png", plot = plot4, width = 8, height = 6)
+ggsave("output/classification_pie_chart.png", plot = plot4, width = 8, height = 6)
 
 

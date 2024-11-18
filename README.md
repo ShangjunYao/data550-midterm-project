@@ -35,10 +35,31 @@ Analyze pre-existing conditions.
 Conducted the comorbidity analysis, focusing on pre-existing conditions and their prevalence among COVID-19 patients, with visual and tabular outputs.
 
 
-Severity and Treatment Type (Coder 3): Tania Armour
-Summarize COVID-19 severity levels and types of care received (e.g., outpatient vs. hospitalized).
-(Classification, patient type, pneumonia, pregnancy)
-Create visualizations, such as pie charts for the classification of cases and bar charts for patient types.
+# Severity and Treatment Type (Coder 3): Tania Armour
+Provides insights into specific health conditions and their interactions among COVID-19 patients, with a focus on visualizing relationships between pneumonia, pregnancy, asthma, diabetes, death status, and COVID-19 severity classification.
+
+## Outputs:
+
+Pneumonia vs. Pregnancy Bar Chart:
+This bar chart compares the count of COVID-19 patients with and without pneumonia, segmented by pregnancy status.
+
+Death Status by Severity Classification Bar Chart:
+Displays the distribution of death status ("Yes" or "No") across different COVID-19 severity classifications.
+
+Severity Classification by Asthma and Diabetes:
+A faceted bar chart showing the distribution of severity classification, segmented by asthma and diabetes status.
+
+COVID-19 Classification Pie Chart:
+A pie chart representing the distribution of severity classifications among COVID-19 patients.
+
+## Files:
+
+pneumonia_vs_pregnancy.png: Pneumonia and pregnancy comparison bar chart saved in output/.
+death_status_by_severity.png: Death status by severity classification bar chart saved in output/.
+severity_by_asthma_diabetes.png: Severity classification by asthma and diabetes bar chart saved in output/.
+classification_pie_chart.png: COVID-19 classification pie chart saved in output/.
+
+
 
 Outcome and Mortality Analysis (Coder 4): Chiao Yu Huang
 Focus on ICU admissions, intubation status, and mortality data.

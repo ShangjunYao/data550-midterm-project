@@ -115,4 +115,27 @@ condition_data_table <- data_with_prevalence %>%
 print(condition_data_table)
 ```
 
+# Severity and Treatment Type
+
+## Graph 1: Comparing pneumonia and pregnancy data
+
+```{r, graph1}
+knitr::include_graphics(here::here("output/pneumonia_vs_pregnancy.png"))
+```
+
+## Death Status by COVID-19 Severity Classification
+```{r, graph2}
+knitr::include_graphics(here::here("output/death_status_by_severity.png"))
+```
+
+## Severity Classification by Asthma and Diabetes
+```{r, graph3}
+knitr::include_graphics(here::here("output/severity_by_asthma_diabetes.png"))
+```
+
+## Classification of COVID-19 Cases (Pie Chart)
+```{r, graph4}
+knitr::include_graphics(here::here("output/classification_pie_chart.png"))
+```
+
 
