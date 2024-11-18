@@ -1,0 +1,40 @@
+# General settings
+output_directory: "output"
+report_title: "COVID-19 Data Analysis"   
+
+# Data file paths
+data_files:
+  main_dataset: "data/covid_sub.csv"      # Path to the main dataset
+  clean_dataset: "data/data_clean.csv"     # Path to the clean dataset
+
+# Analysis settings
+analysis_parameters:
+  date_range:                           
+    start_date: "2020-01-01"
+    end_date: "2021-12-31"
+  age_groups:                         
+    - { min: 0, max: 17 }
+    - { min: 18, max: 40 }
+    - { min: 41, max: 65 }
+    - { min: 66, max: 100 }
+  comorbidity_conditions:                 
+    - diabetes
+    - copd
+    - asthma
+    - hypertension
+    - obesity
+    - cardiovascular
+  include_sex_distribution: true            # Whether to include sex distribution in demographic analysis
+  include_severity_distribution: true       # Whether to analyze case severity levels
+  include_icu_admissions: true              # Whether to include ICU admissions in outcome analysis
+
+# Visualization settings
+visualizations:
+  histogram_bins: 10                        # Number of bins for age distribution histogram
+  save_format: "png"                        # Format for saving figures (e.g., png, jpg, svg)
+
+# Report customization
+report_settings:
+  include_summary_table: true             
+  include_individual_analysis: true         
+  file_format: "pdf"                        

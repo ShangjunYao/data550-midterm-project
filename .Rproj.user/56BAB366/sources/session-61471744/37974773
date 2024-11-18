@@ -1,0 +1,26 @@
+{
+    "id": "37974773",
+    "path": "~/DATA550/midterm_project/pre_existing_conditions_analysis.Rmd",
+    "project_path": "pre_existing_conditions_analysis.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1731903178003.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "69,0",
+        "scrollLine": "46"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1731902903,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1731902903,
+    "read_only": false,
+    "read_only_alternatives": []
+}

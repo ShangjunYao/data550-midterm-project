@@ -1,0 +1,5 @@
+"0","# Load the demographic summary table"
+"0","table_Demographic <- readRDS(here::here(""output/output_demographic"", ""table_Demographic.rds""))"
+"0",""
+"0","# Display the table"
+"0","table_Demographic"

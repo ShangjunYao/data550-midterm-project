@@ -1,0 +1,26 @@
+{
+    "id": "38671022",
+    "path": "~/DATA550/midterm_project/scripts/Demographic.R",
+    "project_path": "scripts/Demographic.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1731899828073.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "132,0",
+        "scrollLine": "104"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1731899793,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1731899793,
+    "read_only": false,
+    "read_only_alternatives": []
+}
