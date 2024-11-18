@@ -5,7 +5,6 @@ library(ggplot2)
 # Open Data
 library(readr)
 data_clean <- read_csv("data/data_clean.csv")
-View(data_clean)
 
 # See how data is structured
 str(data_clean)
@@ -21,7 +20,7 @@ plot1 <- ggplot(data_clean, aes(x = PNEUMONIA, fill = PREGNANT)) +
 
 # Save Graph 1
 ggsave("pneumonia_vs_pregnancy.png", plot = plot1, width = 8, height = 6)
-
+print(plot1)
 # Graph 2: Create a new column for Death status (Yes/No)
 data_clean$DEATH_STATUS <- ifelse(is.na(data_clean$DATE_DIED), "No", "Yes")
 
@@ -67,5 +66,5 @@ plot4 <- ggplot(classification_counts, aes(x = "", y = n, fill = factor(CLASIFFI
 
 # Save Graph 4
 ggsave("classification_pie_chart.png", plot = plot4, width = 8, height = 6)
-getwd()
+
 
