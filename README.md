@@ -1,18 +1,33 @@
-## Dataset Information
+# COVID-19 Data Analysis Project
+
 This project analyzes COVID-19 data from Mexico, covering patient demographics, health conditions, treatment types, and outcomes.
 
-Features: 21 variables covering patient demographics, health conditions, treatment types, and outcomes, including attributes like sex, age, covid classification, pre-existing conditions, and ICU admission status.
+## Features: 
+21 variables covering patient demographics, health conditions, treatment types, and outcomes, including attributes like sex, age, covid classification, pre-existing conditions, and ICU admission status.
 
-Source: Mexican government dataset on COVID-19 cases in Mexico
+##Source: 
+Mexican government dataset on COVID-19 cases in Mexico
 
-## Team designations
+# Team designations
 Team Lead: Shangjun Yao
 Responsibilities: Setting up the GitHub repository, organizing the project structure, managing the configuration file, merging/testing code from team members, and compiling the final report.
 
-Demographic Analysis (Coder 1): Xiaxian Ou:
-Summarize patient demographics.
-(Sex, age)
-Generate tables and visualizations, such as age and sex distribution histograms.
+# Demographic Analysis (Coder 1): Xiaxian Ou:
+## Summarize patient demographics.
+## outputs: 
+Tables:
+
+A summary table grouped by age group and sex.
+
+Visualizations:
+
+Age Distribution Histogram: Shows the distribution of patient ages.
+Classification by Age Group: Illustrates COVID-19 classification distribution segmented by age group.
+
+## Files:
+table_Demographic.rds: Generated summary table saved to output/output_demographic/.
+plot_age_distribution.rds: Histogram of age distribution saved to output/output_demographic/.
+plot_class_age_bar.rds: Bar plot of classification distribution by age group saved to output/output_demographic/.
 
 Comorbidity Analysis (Coder 2): Yueran Cao
 Analyze pre-existing conditions.
@@ -38,7 +53,7 @@ Generate tables and survival rate graphs, and assess ICU and intubation rates ba
 - `/scripts/`: Analysis scripts are organized by type (e.g., demographics, comorbidities).
 - `/output/`: Stores generated tables, figures, and the final report.
 - `/config/`: Contains configuration files to adjust parameters (e.g., file paths, report titles).
-- `/report/`: Contains the final compiled report.
+- `/report/`: Contains the final compiled report.(midterm_report.Rmd)
 
 
 ## Customization
