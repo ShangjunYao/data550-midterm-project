@@ -11,6 +11,17 @@ Mexican government dataset on COVID-19 cases in Mexico
 # Team designations
 Team Lead: Shangjun Yao
 Responsibilities: Setting up the GitHub repository, organizing the project structure, managing the configuration file, merging/testing code from team members, and compiling the final report.
+# Team Project Repository
+GitHub Repository Link: https://github.com/ShangjunYao/data550-midterm-project
+## Integrated Pull Requests
+
+1. **Coder 1 (Demographic Analysis)** - PR #1: Successfully merged, including demographic summary table and visualizations.
+2. **Coder 2 (Pre-Existing Conditions Analysis)** - PR #2: Successfully merged, including bar chart and prevalence table for comorbidities.
+3. **Coder 3 (Comorbidity Visualization)** - PR #3: Successfully merged, adding multiple visualizations, including severity and mortality analyses.
+4. **Coder 4 (Mortality Analysis)** - PR #4: Successfully merged, including ICU, intubation, and mortality rate analysis along with a pregnancy-based mortality plot.
+
+Each coder’s contributions have been merged into the main branch and are documented in the README file with appropriate descriptions and links to their outputs in the `output` folder.
+
 
 # Team Project Repository
 GitHub Repository Link: https://github.com/ShangjunYao/data550-midterm-project
