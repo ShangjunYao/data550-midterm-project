@@ -8,6 +8,26 @@ This project analyzes COVID-19 data from Mexico, covering patient demographics, 
 ##Source: 
 Mexican government dataset on COVID-19 cases in Mexico
 
+# Project setup
+1. clone the repsoitory
+```bash
+git clone https://github.com/ShangjunYao/data550-midterm-project.git
+cd data550-midterm-project
+
+2. install packages
+Option1:
+```bash
+make install
+Option 2:
+```R
+source("renv/activate.R")
+renv::restore()
+
+3. Compile the report:
+```bash 
+make report
+
+
 # Team designations
 Team Lead: Shangjun Yao
 Responsibilities: Setting up the GitHub repository, organizing the project structure, managing the configuration file, merging/testing code from team members, and compiling the final report.
