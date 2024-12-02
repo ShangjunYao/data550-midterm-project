@@ -1,7 +1,7 @@
 # Rule to install R packages using renv
-.PHONY: install
+
 install:
-	Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv'); renv::restore()"
+	Rscript -e "renv::restore()"
 
 # Rule to compile the R Markdown report
 .PHONY: report
